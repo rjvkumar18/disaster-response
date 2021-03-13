@@ -4,8 +4,8 @@
 1. [Project Motivation](#motivation)
 2. [Getting Started](#getting_started)
 	1. [Dependencies](#dependencies)
-	2. [Installing](#installing)
-	3. [Executing Program](#executing)
+	2. [Installation](#installation)
+	3. [Running the App](#executing)
 3. [Authors](#authors)
 4. [License](#license)
 5. [Acknowledgement](#acknowledgement)
@@ -13,15 +13,15 @@
 <a name="motivation"></a>
 ## Project Motivation
 
-This project is part of Data Science Nanodegree Program by Udacity in collaboration with Figure Eight.
-The initial dataset contains pre-labelled tweet and messages from real-life disaster. 
-The aim of the project is to build a Natural Language Processing tool that categorise messages.
+This work is a part of Udacity Data Science Nano-degree program.
+The initial dataset contains pre-labelled tweet and messages from real-life disasters. 
+The main goal of this project is to build a Natural Language Processing tool that categorise messages.
 
-The Project is divided in the following Sections:
+This Project is divided into the following parts:
 
-1. Data Processing, ETL Pipeline to extract data from source, clean data and save them in a proper databse structure
-2. Machine Learning Pipeline to train a model able to classify text message in categories
-3. Web App to show model results in real time
+1. ETL Pipeline to extract data from source, clean data and save them in database
+2. Machine Learning Pipeline to train a model and classify text message into multiple categories
+3. Web App to display model results
 
 <a name="getting_started"></a>
 ## Getting Started
@@ -34,14 +34,14 @@ The Project is divided in the following Sections:
 * SQLlite Database Libraqries: SQLalchemy
 * Web App and Data Visualization: Flask, Plotly
 
-<a name="installing"></a>
-### Installing
+<a name="installation"></a>
+### Installation
 Clone this GIT repository:
 ```
 git clone https://github.com/rjvkumar18/disaster-response.git
 ```
 <a name="executing"></a>
-### Executing Program:
+### Running the App:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
