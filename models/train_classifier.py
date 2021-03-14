@@ -135,15 +135,15 @@ def evaluate_model(model, X_test, Y_test, category_names):
     category_names : label names
     """
 
-    Y_pred = model.predict(X_test)
-    overall_accuracy = (Y_pred == Y_test).mean().mean()
+    y_pred = model.predict(X_test)
+    overall_accuracy = (y_pred == Y_test).mean().mean()
     print('Average overall accuracy {0:.2f}% \n'.format(overall_accuracy*100))
 
-    y_pred_pd = pd.DataFrame(y_pred, columns = y_test.columns)
-    for column in y_test.columns:
+    y_pred_pd = pd.DataFrame(y_pred, columns = Y_test.columns)
+    for column in Y_test.columns:
     	print('------------------------------------------------------\n')
     	print('FEATURE: {}\n'.format(column))
-    	print(classification_report(y_test[column],y_pred_pd[column]))
+    	print(classification_report(Y_test[column],y_pred_pd[column]))
     pass
 
 
