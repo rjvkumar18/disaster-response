@@ -1,12 +1,29 @@
+"""
+This module is responsible for ETL pipeline
+It loads, preprocesses and saves the cleaned data
+"""
+
 # import required libraries
 import sys
 import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
-    # load messages dataset
+    
+    """
+    Loads the messages & categories datasets, returns the merged dataframe
+
+    Parameters
+    ----------
+    messages_filepath : messages csv file path
+    categories_filepath : categories csv file path
+
+    Returns
+    -------
+    df : A pandas dataframe object
+    """
+
     messages = pd.read_csv(messages_filepath)
-    # load categories dataset
     categories = pd.read_csv(categories_filepath)
     # merge datasets
     df = pd.merge(messages, categories, on="id")
@@ -14,6 +31,18 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    """
+    This function does all the required data preprocessing
+
+    Parameters
+    ----------
+    df : The dataframe to be cleaned
+
+    Returns
+    -------
+    df : The cleaned dataframe
+    """
+
     # create a dataframe of the 36 individual category columns
     categories = df['categories'].str.split(';', expand=True)
     # select the first row of the categories dataframe
@@ -46,12 +75,22 @@ def clean_data(df):
     
 
 def save_data(df, database_filename):
-    # Save the clean dataset into an sqlite database
+    """
+    Saves the cleaned dataset into an sqlite database
+
+    Parameters
+    ----------
+    df : The cleaned dataframe
+    database_filename : The path where the .db file is saved
+    """
+    
     engine = create_engine('sqlite:///'+ database_filename)
     df.to_sql('MessageCategory', engine, index=False)
 
 
 def main():
+    """ The main function which executes the ETL pipeline """
+
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]

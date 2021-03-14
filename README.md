@@ -6,6 +6,7 @@
 	1. [Dependencies](#dependencies)
 	2. [Installation](#installation)
 	3. [Running the App](#executing)
+	4. [Main Files](#files)
 3. [Authors](#authors)
 4. [License](#license)
 5. [Acknowledgement](#acknowledgement)
@@ -53,6 +54,12 @@ git clone https://github.com/rjvkumar18/disaster-response.git
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+<a name="files"></a>
+### Main Files
+
+There are mainly three files 'run.py', 'process_data.py' & 'train_classifier.py' in **app**, **data** and **models** folder,
+which are responsible for the application, ETL and ML pipelines.
 
 
 <a name="authors"></a>

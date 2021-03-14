@@ -57,8 +57,7 @@ model = joblib.load("../models/classifier.pkl")
 @app.route('/index')
 def index():
     
-        # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
+    # extract data needed for visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
@@ -67,9 +66,8 @@ def index():
     
     
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
-            # GRAPH 1 - genre graph
+    # genre graph
         {
             'data': [
                 Bar(
@@ -88,7 +86,7 @@ def index():
                 }
             }
         },
-            # GRAPH 2 - category graph    
+     # category graph    
         {
             'data': [
                 Bar(
@@ -128,7 +126,7 @@ def go():
     classification_labels = model.predict([query])[0]
     classification_results = dict(zip(df.columns[4:], classification_labels))
 
-    # This will render the go.html Please see that file. 
+    # This will render the go.html
     return render_template(
         'go.html',
         query=query,
