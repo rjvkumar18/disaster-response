@@ -16,7 +16,8 @@
 
 This work is a part of Udacity Data Science Nano-degree program.
 The initial dataset contains pre-labelled tweet and messages from real-life disasters. 
-The main goal of this project is to build a Natural Language Processing tool that categorise messages.
+The main goal of this project is to build a Natural Language Processing tool that categorise messages and 
+helps in identifying if these messages are related to disaster or not. This would be of great help for any disaster relief agencies.
 
 This Project is divided into the following parts:
 
@@ -58,8 +59,20 @@ git clone https://github.com/rjvkumar18/disaster-response.git
 <a name="files"></a>
 ### Main Files
 
-There are mainly three files 'run.py', 'process_data.py' & 'train_classifier.py' in **app**, **data** and **models** folder,
-which are responsible for the application, ETL and ML pipelines.
+*app/templates/**:
+    - master.html: Main page of web app
+    - go.html: Classification result page of web app
+*app/run.py*: Flask file that runs the app
+
+*data/**:
+    - process_data.py: ETL pipeline used for data extraction, preprocessing and loading in a SQLite database
+    - disaster_categories.csv: Categories data to be processed
+    - disaster_messages.csv: Messages data to be processed
+    - DisasterResponse.db: Database to save cleaned data
+
+*models/**:
+    - train_classifier.py: A machine learning pipeline that loads data, trains a model, and saves the trained model as a .pkl file
+    - classifier.pkl: Saved ML model
 
 
 <a name="authors"></a>

@@ -22,7 +22,7 @@ from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.multioutput import MultiOutputClassifier
-from sklearn.ensemble import GradientBoostingClassifier,AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import make_scorer, accuracy_score, f1_score, fbeta_score, classification_report
 from sqlalchemy import create_engine
 
@@ -104,9 +104,10 @@ def build_model():
     """
     This function returns a scikit-learn ML Pipeline that processs text messages
     according to NLP best practices using feature union and applying a classifier
+    GridSearchCV  is used to find the best parameters for the model
     """
 
-    model = Pipeline([
+    pipeline = Pipeline([
         ('features', FeatureUnion([
 
             ('text_pipeline', Pipeline([
@@ -117,9 +118,13 @@ def build_model():
             ('starting_verb', StartingVerbExtractor())
         ])),
 
-        ('clf', MultiOutputClassifier(AdaBoostClassifier()))
+        ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
     
+    parameters = {'clf__estimator__max_depth': [10, 50, None],
+              'clf__estimator__min_samples_leaf':[2, 5, 10]}
+
+    model = GridSearchCV(pipeline, parameters)
     return model
 
 

@@ -69,6 +69,8 @@ def clean_data(df):
     print("Number of duplicate rows: {} out of {} rows".format(df.duplicated().sum(), df.shape[0]))
     # drop duplicates
     df = df.drop_duplicates()
+    # Remove non-binary entries
+    df = df[df['related'] != 2]
     # check number of duplicates
     print("Number of duplicate rows after deletion: {} out of {} rows".format(df.duplicated().sum(), df.shape[0]))
     return df
@@ -85,7 +87,7 @@ def save_data(df, database_filename):
     """
     
     engine = create_engine('sqlite:///'+ database_filename)
-    df.to_sql('MessageCategory', engine, index=False)
+    df.to_sql('MessageCategory', engine, if_exists='replace', index=False)
 
 
 def main():
