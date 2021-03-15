@@ -59,18 +59,18 @@ git clone https://github.com/rjvkumar18/disaster-response.git
 <a name="files"></a>
 ### Main Files
 
-*app/templates/**:
+* app/templates/*:
     - master.html: Main page of web app
     - go.html: Classification result page of web app
-*app/run.py*: Flask file that runs the app
+* app/run.py: Flask file that runs the app
 
-*data/**:
+* data/*:
     - process_data.py: ETL pipeline used for data extraction, preprocessing and loading in a SQLite database
     - disaster_categories.csv: Categories data to be processed
     - disaster_messages.csv: Messages data to be processed
     - DisasterResponse.db: Database to save cleaned data
 
-*models/**:
+* models/*:
     - train_classifier.py: A machine learning pipeline that loads data, trains a model, and saves the trained model as a .pkl file
     - classifier.pkl: Saved ML model
 
